@@ -4,20 +4,23 @@ import "./style.css";
 const app: HTMLDivElement = document.querySelector("#app")!;
 let count: number = 0;
 let multiplier: number = 1;
-let rateCost: number[] = [10,100,1000];
+const rateCost: number[] = [10, 100, 1000];
 let ratepurchases: number = 0;
 let start = performance.now();
 const gameName = "ALL CAKED UP";
 document.title = gameName;
-const button = document.createElement("button");//Main Clicker
+const button = document.createElement("button"); //Main Clicker
 //-autobake---
 const upgrade1 = document.createElement("button"); //auto bake
 const upgradeRate = document.createElement("button"); //add 1.1x auto
 const upgradeRate1 = document.createElement("button"); //add 1.2x auto
 const upgradeRate2 = document.createElement("button"); //add 50x auto
-upgradeRate.textContent = "Upgrade rate of cakes to 1.1/sec - " + rateCost[0] + " Coins";
-upgradeRate1.textContent = "Upgrade rate of cakez to 1.2/sec - " + rateCost[1] + " Coins";
-upgradeRate2.textContent = "Upgrade rate of cakes to 50/sec - " + rateCost[2] + " Coins";
+upgradeRate.textContent =
+  "Hire Caked up baker (+1.1/sec) - " + rateCost[0] + " Cakes";
+upgradeRate1.textContent =
+  "Hire Double Cheeked Up Baker (+1.2/sec) - " + rateCost[1] + " Cakes";
+upgradeRate2.textContent =
+  "AUTO BAKER B.O.U.N.C.E. Module (+50/sec) - " + rateCost[2] + " Cakes";
 upgrade1.textContent = "AUTO BAKER 3000 - 10 CAKES";
 //----
 button.textContent = "🎂";
@@ -40,7 +43,8 @@ function eatcake() {
   counter.textContent = "Cakes baked: " + count.toFixed(1);
   disabledButton();
 }
-function disabledButton() { //disables unpurchasable items due to currency threashholds
+function disabledButton() {
+  //disables unpurchasable items due to currency threashholds
   upgrade1.disabled = count < 10;
   upgradeRate.disabled = count < rateCost[0];
   upgradeRate1.disabled = count < rateCost[1];
@@ -73,37 +77,47 @@ upgrade1.addEventListener("click", () => {
 upgradeRate.addEventListener("click", () => {
   if (count >= rateCost[0]) {
     count -= rateCost[0];
-    rateCost[0]*=1.15;
+    rateCost[0] *= 1.15;
     multiplier += 0.1;
     //multiplier.toPrecision(2);
     //rateCost[0].toFixed(1);
     //(Math.round(rateCost[0] * 100) / 100).toFixed(2);
     ratepurchases++;
     ratepurText.textContent = "Cake Rate Purchases: " + ratepurchases;
-    DisplayRate.textContent = "Baking " + multiplier.toFixed(1) + " cake per second";
-    upgradeRate.textContent = "Upgrade the AUTO BAKER by 1.1/sec - " + rateCost[0].toFixed(1) + " Coins";
+    DisplayRate.textContent =
+      "Baking " + multiplier.toFixed(1) + " cake per second";
+    upgradeRate.textContent =
+      "Hire Caked up baker (+1.1/sec) -" +
+      rateCost[0].toFixed(1) +
+      " Cakes";
   }
 });
 upgradeRate1.addEventListener("click", () => {
   if (count >= rateCost[1]) {
     count -= rateCost[1];
-    rateCost[1]*=1.15;
+    rateCost[1] *= 1.15;
     multiplier += 0.2;
     ratepurchases++;
     ratepurText.textContent = "Cake Rate Purchases: " + ratepurchases;
-    DisplayRate.textContent = "Baking " + multiplier.toFixed(1) + " cake per second";
-    upgradeRate1.textContent = "Upgrade the AUTO BAKER to 1.2/sec - " + rateCost[1].toFixed(1) + " Coins";
+    DisplayRate.textContent =
+      "Baking " + multiplier.toFixed(1) + " cake per second";
+    upgradeRate1.textContent =
+      "Hire Double Cheeked Up Baker (+1.2/sec) - " +
+      rateCost[1].toFixed(1) +
+      " Cakes";
   }
 });
-upgradeRate2.addEventListener("click", () => { 
+upgradeRate2.addEventListener("click", () => {
   if (count >= rateCost[2]) {
     count -= rateCost[2];
-    rateCost[2]*=1.15;
+    rateCost[2] *= 1.15;
     multiplier += 50.0;
     ratepurchases++;
     ratepurText.textContent = "Cake Rate Purchases: " + ratepurchases;
-    DisplayRate.textContent = "Baking " + multiplier.toFixed(1) + " cake per second";
-    upgradeRate2.textContent = "Upgrade the AUTO BAKER to 50/sec - " + rateCost[2].toFixed(1) + " Coins";
+    DisplayRate.textContent =
+      "Baking " + multiplier.toFixed(1) + " cake per second";
+    upgradeRate2.textContent =
+      "AUTO BAKER B.O.U.N.C.E. Module (+50/sec) - " + rateCost[2].toFixed(1) + " Cakes";
   }
 });
 /*
