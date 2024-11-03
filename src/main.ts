@@ -160,7 +160,7 @@ for (let i = 0; i < availableItems.length; i++) {
       if (count >= availableItems[i].cost) {
         count -= availableItems[i].cost;
         app.append(DisplayRate);
-        for(let i = 1; i<6;i++){
+        for (let i = 1; i < 6; i++) {
           app.appendChild(availableItems[i].buttonVar);
           app.appendChild(availableItems[i].desVar);
         }
