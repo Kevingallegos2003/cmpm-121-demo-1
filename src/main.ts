@@ -1,5 +1,6 @@
 import "./style.css";
-
+//Thanks to Cheristic for the css background code from (line 7)https://github.com/Cheristic/cmpm-121-demo-1/blob/main/src/style.css
+//Text style and buttons inspired by Eat the Candy! (https://scso-ucsc.github.io/Incremental-Game-Development/)
 //---DEFINITIONS-------------------
 interface Item {
   name: string;
@@ -19,6 +20,8 @@ let start = performance.now();
 const gameName = "ALL CAKED UP";
 document.title = gameName;
 const button = document.createElement("button"); //Main Clicker
+button.style.width = '100px';
+button.style.height = '100px';
 //-autobake---
 const autobakeUpgrade = document.createElement("button"); //auto bake
 const upgradeRate = document.createElement("button"); //add 1.1x auto
